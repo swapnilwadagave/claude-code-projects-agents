@@ -1,0 +1,44 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "80:80"
+    restart: unless-stopped
+
+  ngrok:
+    image: ngrok/ngrok:latest
+    environment:
+      - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
+    command: http frontend:80
+    ports:
+      - "4040:4040"
+    depends_on:
+      - frontend
+    restart: unless-stopped
+
+# Phase 2: uncomment to add backend + database
+#  backend:
+#    build:
+#      context: .
+#      dockerfile: backend/Dockerfile
+#    environment:
+#      - DATABASE_URL=postgres://portfolio:portfolio@db:5432/portfolio
+#    depends_on:
+#      - db
+#    restart: unless-stopped
+#
+#  db:
+#    image: postgres:16-alpine
+#    environment:
+#      - POSTGRES_USER=portfolio
+#      - POSTGRES_PASSWORD=portfolio
+#      - POSTGRES_DB=portfolio
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
+#      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+#    restart: unless-stopped
+
+# volumes:
+#   postgres_data:

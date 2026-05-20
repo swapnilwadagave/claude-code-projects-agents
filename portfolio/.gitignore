@@ -1,0 +1,15 @@
+# Environment
+.env
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# Build output
+frontend/dist/
+
+# Generated at build time — do not commit
+frontend/src/data/github-repos.json
+
+# OS
+.DS_Store

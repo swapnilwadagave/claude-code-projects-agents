@@ -1,0 +1,39 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 3rem;
+  align-items: start;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+}
+
+.avatarImg {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  object-fit: cover;
+  filter: grayscale(20%);
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .avatar {
+    order: -1;
+  }
+}
