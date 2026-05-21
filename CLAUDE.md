@@ -17,6 +17,16 @@ React + Vite static portfolio served via nginx + ngrok Docker Compose stack.
 - **Secrets:** `portfolio/.env` and `.claude/settings.local.json` are git-ignored — never commit them
 - **ADRs:** `portfolio/decisions/` — see `portfolio/decisions/README.md` for the index
 
+### `url-shortener/`
+Full-stack URL shortener — Node/Express backend + React dashboard + PostgreSQL, all via Docker Compose.
+
+- **Start:** `docker compose up --build` (from `url-shortener/`)
+- **Dev backend:** `cd url-shortener/backend && npm install && npx prisma migrate dev && npm run dev`
+- **Dev frontend:** `cd url-shortener/frontend && npm install && npm run dev`
+- **Config:** Copy `url-shortener/.env.example` → `url-shortener/.env`; fill in `POSTGRES_PASSWORD`, `JWT_ACCESS_SECRET`, `JWT_REFRESH_SECRET`
+- **Secrets:** `url-shortener/.env` is git-ignored — never commit it
+- **ADRs:** `url-shortener/decisions/` — see `url-shortener/decisions/README.md` for the index
+
 ## Notes
 
 - Update this file with build commands, architecture notes, and dev workflows as new projects are added.
