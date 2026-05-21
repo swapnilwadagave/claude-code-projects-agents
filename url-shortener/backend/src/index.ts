@@ -10,6 +10,10 @@ import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
 
+// Trust the nginx reverse proxy so express-rate-limit reads the real client IP
+// from X-Forwarded-For instead of the nginx container IP.
+app.set('trust proxy', 1);
+
 app.use(helmet());
 app.use(cors({
   origin: env.NODE_ENV === 'production' ? env.BASE_URL : true,
