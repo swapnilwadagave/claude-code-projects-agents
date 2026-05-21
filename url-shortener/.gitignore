@@ -1,0 +1,12 @@
+# Secrets
+.env
+
+# Node
+node_modules/
+dist/
+
+# Build
+*.js.map
+
+# OS
+.DS_Store
